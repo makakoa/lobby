@@ -2,6 +2,9 @@
 
 module.exports = [
   'lobby-home',
+
+  [require('loader')],
+
   ['h1', 'the lobby'],
 
   ['about-section',
@@ -33,7 +36,7 @@ module.exports = [
      ]
     ],
 
-    'the lobby will then redirect to ',
+    'the lobby will then serve as a loading page and redirect to ',
 
     ['lobby-url',
      'https://',

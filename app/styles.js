@@ -36,6 +36,10 @@ module.exports = {
     'justify-content': 'center',
     'align-items': 'center',
 
+    h1: {
+      'font-size': '40px'
+    },
+
     'about-section': {
       display: 'block',
       'max-width': '60ch',
@@ -67,24 +71,41 @@ module.exports = {
     display: 'flex',
     'flex-direction': 'column',
     'justify-content': 'center',
+    'align-items': 'center'
+
+  },
+
+  'loader': {
+    margin: '20px',
+    'font-size': '36px',
+    color: '#444444',
+    position: 'relative',
+    display: 'flex',
     'align-items': 'center',
+    'justify-content': 'center',
 
-    'loader': {
-      margin: '20px',
-      'font-size': '36px',
-      color: '#444444',
-      position: 'relative',
-      display: 'flex',
-      'align-items': 'center',
-      'justify-content': 'center',
+    height: '45px',
+    width: '45px',
 
-      height: '45px',
-      width: '45px',
+    'layer-one': loader('15px', '1s'),
+    'layer-two': loader('30px', '3s'),
+    'layer-three': loader('45px', '5s')
+  },
 
-      'layer-one': loader('15px', '1s'),
-      'layer-two': loader('30px', '3s'),
-      'layer-three': loader('45px', '5s')
+  logo: {
+    position: 'fixed',
+    display: 'flex',
+    'align-items': 'center',
+    bottom: '16px',
+    right: '16px',
+    'font-size': '18px',
+    color: '#777777',
+
+    img: {
+      'margin-left': '8px',
+      height: '20px'
     }
-
   }
+
+
 };

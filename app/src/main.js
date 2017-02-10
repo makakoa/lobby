@@ -42,9 +42,11 @@ module.exports = rust.class({
   },
 
   render: function() {
+    if (this.state.status) window.document.title = this.state.status;
 
     return rust.o2(this.props.target ? [
       'lobby-loading',
+      ['logo', 'the lobby', ['img', {src: '/icon.png'}]],
       ['h1', this.state.status],
       [loader]
     ] : require('home'));
