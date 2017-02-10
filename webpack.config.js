@@ -31,7 +31,7 @@ module.exports = {
     filename: 'scripts.min.js'
   },
   module: {
-    preLoaders: [{
+    preLoaders: debug ? [{
       test:    /\.js$/,
       exclude: /node_modules/,
       loader: 'jshint-loader'
@@ -39,23 +39,21 @@ module.exports = {
       test:    /\.js$/,
       exclude: /node_modules/,
       loader: 'jscs-loader'
-    }],
+    }] : [],
     loaders: _.flatten([
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loaders: debug
-          ? ['react-hot-loader/webpack', 'babel?presets[]=react']
-          : ['babel?presets[]=react']
+        loaders: ['react-hot-loader/webpack', 'babel?presets[]=react']
       },
       [{
         test: /\.json$/,
         loader: 'json'
       }],
-      [{
+      debug ? [{
         test:   /\.css$/,
         loader: 'style-loader!css-loader'
-      }]
+      }] : []
     ])
   },
   resolve: {
@@ -67,7 +65,16 @@ module.exports = {
       'lib'
     ]
   },
-  plugins: [
+  plugins: debug ? [
     new webpack.HotModuleReplacementPlugin()
+  ] : [
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(_.pick(
+        $, 'NODE_ENV'
+      ))
+    }),
+    new webpack.optimize.UglifyJsPlugin({mangle: false}),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin()
   ]
 };
