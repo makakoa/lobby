@@ -33,7 +33,7 @@ module.exports = rust.class({
       .get(url)
       .end(function(err, res) {
         // Access Control block has no status code
-        console.log('response', err.status, err.message, res);
+        console.log('response', err, res);
         console.log('took', Date.now() - ctx.state.start);
         ctx.setState({status: 'opening'});
         window.location = url;
