@@ -1,15 +1,22 @@
 'use strict';
 
+var border = 2;
 function loader(size, time) {
   return {
     position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    margin: 'auto',
     display: 'block',
-    height: size,
-    width: size,
+    height: (size - border) + 'px',
+    width: (size - border) + 'px',
     'border-radius': '50%',
     transition: time + ' linear',
     transform: 'rotate(0deg)',
-    'border-top': '2px solid black'
+    border: '0px solid transparent',
+    'border-top': border + 'px solid black'
   };
 }
 
@@ -20,6 +27,8 @@ module.exports = {
   },
 
   'body': {
+    'box-sizing': 'border-box',
+    padding: '10px',
     height: '100vh',
     width: '100vw'
   },
@@ -87,9 +96,9 @@ module.exports = {
     height: '45px',
     width: '45px',
 
-    'layer-one': loader('15px', '1s'),
-    'layer-two': loader('30px', '3s'),
-    'layer-three': loader('45px', '5s')
+    'layer-one': loader(15, '1s'),
+    'layer-two': loader(30, '3s'),
+    'layer-three': loader(45, '5s')
   },
 
   logo: {
